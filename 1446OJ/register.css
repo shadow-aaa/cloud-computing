@@ -1,0 +1,65 @@
+.register
+{
+    border: 1px solid white;
+    width: 30%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10%;
+    background: #00000080;
+    padding: 20px 50px;
+    border-radius: 30px; 
+    transition:0.2s;
+
+}
+.register h1 {
+    color: white;
+}
+.register p{
+    color: white;
+}
+
+.register input {
+    width: 200px; /* 设置合适的宽度 */
+    border: 0; /* 首先将边界取消，方便下面修改下部边界宽度 */
+    border-bottom: 3px solid white; /* 将下边界进行修改，显示出横线效果 */
+    font-size: 18px; /* 将字体适当的变大加粗 */
+    background: #eeebeb00; /* 将输入框设置为透明 */
+    color: white; /* 上面的文本颜色设置为白色，但是placeholder的颜色要单独设置 */
+    padding: 5px 10px; /* 为了placeholder的内容不是顶格显示，增加内部边界 */
+}
+
+.register .choice select
+{
+    display: inline-block;
+	width: 150px;
+	position: relative;
+	vertical-align: middle;
+	padding: 0;
+	overflow: hidden;
+	background-color: #fff;
+	color: #555;
+	border: 1px solid #aaa;
+	text-shadow: none;
+	border-radius: 4px;	
+	transition: box-shadow 0.25s ease;
+	z-index: 2;
+
+}
+
+.register .botton button {
+
+    width: 150px; 
+    text-transform: uppercase;
+    border: 3px solid #FFFFFF; 
+    margin-top: 18px;
+    text-align: center;
+    font-size: 18px; 
+    color: #FFFFFF;
+    line-height: 50px;
+    border-radius: 30px;
+    transition:0.2s;
+    background:rgba(0,0,0,0);   
+}
+
+
+

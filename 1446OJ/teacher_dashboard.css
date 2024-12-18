@@ -1,0 +1,37 @@
+h1{
+    color: rgb(21, 20, 20);
+    
+}
+/* 导航栏 */
+.dashboard{
+	width: 100%;
+	height: 60px;
+	background-color: #00000080;
+}
+/* 让链接横排 */
+.dashboard ul li {
+    display: inline;
+}
+
+/* 字体美化等 */
+.dashboard ul li a {
+    float: left;
+    padding: 11px 20px; 
+    font-size: 28px;
+    text-align: center;
+    text-decoration: none;
+    /* background: url(../images/templatemo_menu_divider.png)        center right no-repeat; */
+    color: #fff;    
+    font-family: Tahoma;
+    outline: none;
+}
+/* 鼠标经过该链接，变色 */
+.dashboard li a:hover {
+    color:cornflowerblue;
+    background-color:white;
+    /*弧度*/
+    /* border-radius: 30px;  */
+   
+}
+
+

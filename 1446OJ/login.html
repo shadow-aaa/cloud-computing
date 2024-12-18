@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<style>
+    input::-webkit-input-placeholder {
+        color:white;
+    }
+    input::-moz-placeholder {
+        color: white;
+    }
+    input:-moz-placeholder {
+        color: white;
+    }
+    input:-ms-input-placeholder {
+        color: white;
+    }
+</style>
+<body>
+    <div class="login-page">
+    <h1>登录</h1>
+    <form action="login.php" method="POST">
+        <p>用户名：</p>
+        <input type="text" id="username" placeholder="username" name="username" required><br>
+        <p>密码：</p>
+        <input type="password" id="password" placeholder="password" name="password" required><br>
+        <div class="botton"><button type="submit">登录</button></div>
+    </form>
+    </div>
+</body>
+</html>
