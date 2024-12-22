@@ -1,0 +1,53 @@
+1446.xyz/
+├── 请自行更改config.php中的数据库连接账密.txt
+├── add_question.php
+├── class_management.php
+├── config.php
+├── create_class.php
+├── create_exam.php
+├── delete_class.php
+├── error
+│   ├── 400.html
+│   ├── 403.html
+│   ├── 404.html
+│   ├── 500.html
+│   ├── 501.html
+│   ├── 502.html
+│   ├── 503.html
+│   ├── 504.html
+│   ├── 505.html
+│   ├── 506.html
+│   ├── 507.html
+│   ├── 509.html
+│   ├── 510.html
+│   └── index.html
+├── get_questions.php
+├── grade_exam_back.php
+├── grade_exam.php
+├── images
+│   └── index_bg.jpg
+├── index.css
+├── index.html
+├── join_class_back.php
+├── join_class.css
+├── join_class.php
+├── login.css
+├── login.html
+├── login.php
+├── question_entry.css
+├── question_entry.html
+├── register.css
+├── register.html
+├── register.php
+├── remove_student.php
+├── student_dashboard.css
+├── student_dashboard.html
+├── styles.css
+├── submit_exam.php
+├── take_exam.css
+├── take_exam.php
+├── teacher_dashboard.css
+├── teacher_dashboard.html
+└── view_scores.php
+
+2 directories, 48 files
