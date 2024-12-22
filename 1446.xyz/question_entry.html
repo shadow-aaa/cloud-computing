@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>题目录入</title>
+    <link rel="stylesheet" href="question_entry.css">
+    <script>
+        function showOptions() {
+            var type = document.getElementById('type').value;
+            document.getElementById('single-options').style.display = 'none';
+            document.getElementById('multiple-options').style.display = 'none';
+            document.getElementById('true-false-options').style.display = 'none';
+            document.getElementById('blank-options').style.display = 'none';
+
+            if (type === 'single' || type === 'multiple') {
+                document.getElementById(type + '-options').style.display = 'block';
+            } else if (type === 'true_false') {
+                document.getElementById('true-false-options').style.display = 'block';
+            } else if (type === 'blank') {
+                document.getElementById('blank-options').style.display = 'block';
+            }
+        }
+
+        // 页面加载时自动请求题目
+        window.onload = function() {
+            fetchQuestions();
+        };
+
+        function fetchQuestions() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'get_questions.php', true); // 请求获取题目数据
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var questions = JSON.parse(xhr.responseText); // 将返回的 JSON 转换为数组
+                    var questionsListDiv = document.getElementById('questions-list');
+                    questionsListDiv.innerHTML = ''; // 清空现有内容
+
+                    if (questions.length > 0) {
+                        questions.forEach(function(question) {
+                            var questionDiv = document.createElement('div');
+                            questionDiv.classList.add('question-item');
+
+                            // 根据题型不同展示不同内容
+                            var questionHTML = `
+                                <h3>题目内容: ${question.text}</h3>
+                                <p>题型: ${question.type}</p>
+                                <p>答案: ${question.answer || '无'}</p>
+                                <p>分数: ${question.points}</p>
+                            `;
+
+                            questionDiv.innerHTML = questionHTML;
+                            questionsListDiv.appendChild(questionDiv); // 将题目添加到页面中
+                        });
+                    } else {
+                        questionsListDiv.innerHTML = '<p>暂无题目</p>';
+                    }
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <div class="question">
+        <h1>题目录入</h1>
+        <form action="add_question.php" method="POST">
+            <label for="text">题目内容：</label><br>
+            <textarea id="text" name="text" rows="4" cols="50" required></textarea><br>
+
+            <p>题目类型</p>
+            <select id="type" name="type" onchange="showOptions()" required>
+                <option value="none" selected disabled hidden>请选择题型</option>
+                <option value="single">单选题</option>
+                <option value="multiple">多选题</option>
+                <option value="blank">填空题</option>
+                <option value="true_false">判断题</option>
+                <option value="short_answer">简答题</option>
+            </select><br>
+
+            <div id="single-options" style="display:none;">
+                <label for="single-option-a">选项 A：</label><br>
+                <input type="text" id="single-option-a" name="single-option-a"><br>
+                <label for="single-option-b">选项 B：</label><br>
+                <input type="text" id="single-option-b" name="single-option-b"><br>
+                <label for="single-option-c">选项 C：</label><br>
+                <input type="text" id="single-option-c" name="single-option-c"><br>
+                <label for="single-option-d">选项 D：</label><br>
+                <input type="text" id="single-option-d" name="single-option-d"><br>
+                <label for="single-correct">正确选项：</label><br>
+                <select id="single-correct" name="single-correct">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select><br>
+            </div> 
+
+            <div id="blank-options" style="display:none;">
+                <label for="blank-correct">正确答案：</label><br>
+                <input type="text" id="blank-correct" name="blank-correct"><br>
+            </div>
+
+            <div id="multiple-options" style="display:none;">
+                <label for="multiple-option-a">选项 A：</label><br>
+                <input type="text" id="multiple-option-a" name="multiple-option-a"><br>
+                <label for="multiple-option-b">选项 B：</label><br>
+                <input type="text" id="multiple-option-b" name="multiple-option-b"><br>
+                <label for="multiple-option-c">选项 C：</label><br>
+                <input type="text" id="multiple-option-c" name="multiple-option-c"><br>
+                <label for="multiple-option-d">选项 D：</label><br>
+                <input type="text" id="multiple-option-d" name="multiple-option-d"><br>
+                <label for="multiple-correct">正确选项：</label><br>
+                <input type="checkbox" id="multiple-correct-a" name="multiple-correct[]" value="A"> A<br>
+                <input type="checkbox" id="multiple-correct-b" name="multiple-correct[]" value="B"> B<br>
+                <input type="checkbox" id="multiple-correct-c" name="multiple-correct[]" value="C"> C<br>
+                <input type="checkbox" id="multiple-correct-d" name="multiple-correct[]" value="D"> D<br>
+            </div>
+
+            <div id="true-false-options" style="display:none;">
+                <label for="true-false-correct">正确答案：</label><br>
+                <input type="radio" id="true-false-true" name="true-false-correct" value="true"> 正确<br>
+                <input type="radio" id="true-false-false" name="true-false-correct" value="false"> 错误<br>
+            </div>
+            <p>设置题目分数</p>
+            <input type="number" id="points" name="points" value="1" min="1" required><br>
+            <div class="button-container">
+                <button type="submit">提交题目</button>
+                <button type="button" onclick="window.location.href='teacher_dashboard.html'">返回</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- 新增的框，用来显示数据库中的题目 -->
+    <div class="existing-questions">
+        <h2>已有题目</h2>
+        <div id="questions-list">
+            <!-- 这里将显示数据库中的题目 -->
+        </div>
+    </div>
+
+    <script src="question_entry.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+/* 基本重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 背景样式 */
+.background {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 标题样式 */
+.background h1 {
+    font-size: 50px; /* 增大字体 */
+    color: rgb(21, 20, 20);
+    text-align: center; /* 居中对齐 */
+    font-family: 'Arial', sans-serif;
+}
+
+/* 导航栏样式 */
+.dashboard {
+    width: 100%;
+    height: auto;
+    background-color: #00000080;
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    justify-content: center; /* 居中内容 */
+    align-items: center; /* 居中内容 */
+    padding: 20px 0;
+    position: absolute; /* 使用绝对定位 */
+    top: 15%; /* 调整 top 值来向上或向下移动 */
+}
+
+/* 列表样式 */
+.dashboard ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+/* 导航链接样式 */
+.dashboard ul li a {
+    display: block;
+    padding: 15px 40px;
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+    font-family: Tahoma, sans-serif;
+    margin: 10px 0; /* 增加按钮之间的间距 */
+    border-radius: 10px; /* 按钮圆角 */
+    width: 220px;
+    text-align: center;
+}
+
+/* 按钮悬停效果 */
+.dashboard li a:hover {
+    color: cornflowerblue;
+    background-color: white;
+    border-radius: 30px;
+}
+
+/* 返回按钮特殊样式 */
+.return-button a {
+    background-color: #ff5733; /* 使用不同的颜色突出显示返回按钮 */
+    font-weight: bold;
+}
+
+.return-button a:hover {
+    background-color: #e94e00; /* 更改悬停时颜色 */
+}
